@@ -1,0 +1,106 @@
+# depslib dependency file v1.0
+1715558175 source:d:\flappybird\bird.cpp
+	"Bird.h"
+
+1714589334 d:\flappybird\gameobject.h
+	"TexturedRectangle.h"
+	<vector>
+
+1715558175 d:\flappybird\texturedrectangle.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<string>
+	"CheckCollision.h"
+	<iostream>
+	<vector>
+
+1715458909 d:\flappybird\checkcollision.h
+	<SDL.h>
+	<iostream>
+	<algorithm>
+	<vector>
+
+1715401718 source:d:\flappybird\gameobject.cpp
+	"GameObject.h"
+	<iostream>
+
+1715401718 source:d:\flappybird\ground.cpp
+	"Ground.h"
+
+1714589334 d:\flappybird\ground.h
+	"GameObject.h"
+
+1715458887 source:d:\flappybird\sdlapp.cpp
+	"SDLApp.h"
+
+1714589334 d:\flappybird\sdlapp.h
+	<SDL.h>
+	<SDL_image.h>
+	<SDL_ttf.h>
+	<SDL_mixer.h>
+	<string>
+	<iostream>
+	<functional>
+
+1714589334 source:d:\flappybird\sound.cpp
+	"Sound.h"
+
+1714589334 d:\flappybird\sound.h
+	<SDL.h>
+	<SDL_mixer.h>
+	<string>
+
+1714589334 source:d:\flappybird\text.cpp
+	"Text.h"
+
+1714589334 d:\flappybird\text.h
+	<SDL.h>
+	<SDL_ttf.h>
+	"TexturedRectangle.h"
+
+1715558175 source:d:\flappybird\texturedrectangle.cpp
+	"TexturedRectangle.h"
+
+1714589353 source:d:\flappybird\button.cpp
+	"Button.h"
+
+1714589334 d:\flappybird\button.h
+	"TexturedRectangle.h"
+
+1715558175 source:d:\flappybird\main.cpp
+	"SDLApp.h"
+	"TexturedRectangle.h"
+	"GameObject.h"
+	"Bird.h"
+	"Pipe.h"
+	"Ground.h"
+	"CheckCollision.h"
+	"Text.h"
+	"Sound.h"
+	"Button.h"
+	<vector>
+	<fstream>
+	<random>
+	<chrono>
+
+1715401718 d:\flappybird\bird.h
+	"GameObject.h"
+	"TexturedRectangle.h"
+	"CheckCollision.h"
+
+1714589334 d:\flappybird\pipe.h
+	"GameObject.h"
+	<iostream>
+	"Bird.h"
+
+1715558175 source:d:\flappybird\pipe.cpp
+	"Pipe.h"
+	<chrono>
+	<random>
+	"CheckCollision.h"
+
+1715487133 source:d:\flappybird\checkcollision.cpp
+	"CheckCollision.h"
+	<cmath>
+
