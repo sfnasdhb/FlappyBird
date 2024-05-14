@@ -30,7 +30,7 @@ Pipe::Pipe(SDL_Renderer* renderer, std::string path, int w, int h)
 	mSpriteWidth = w;
 	mIsMoving = true;
 	mIsMovingDown = false;
-	mGetScore = { 0, 0, 0, 0 };
+	mGetScore = { 0, 0, 0, 0 }; //vung ghi diem
 	mDistance = 0;
 	mIsScoring = false;
 
@@ -57,8 +57,8 @@ void Pipe::SetDimension(int w, int h) {
 void Pipe::SetStatus(int posX, int posYMax, int posYMin, int distance)
 {
 	mt19937 rng(chrono::steady_clock::now().time_since_epoch().count());
-	mPipeLow->GetTexturedRectangle().SetPosition(posX, rng() % (posYMax - posYMin + 1) + posYMin);
-	mPipeHigh->GetTexturedRectangle().SetPosition(posX, mPipeLow->GetY() - distance - mSpriteHeight);
+	mPipeLow->GetTexturedRectangle().SetPosition(posX, rng() % (posYMax - posYMin + 1) + posYMin); //sinh so ngau nhien bat dau tu posYMin
+	mPipeHigh->GetTexturedRectangle().SetPosition(posX, mPipeLow->GetY() - distance - mSpriteHeight); //thut vao de ve ong tren
 	mGetScore.x = mPipeLow->GetX() + mSpriteWidth;
 	mGetScore.y = mPipeLow->GetY() - distance;
 	mGetScore.h = distance;

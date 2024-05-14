@@ -20,8 +20,8 @@ const int SPEED_SCROLLING_SCREEN = 3;
 
 //Bird constant
 const int DEFAULT_SPEED_FLY = -8;
-const double DEFAULT_ANGLE = -30;
-const int SLOW_DOWN_RENDER_BIRD = 4;
+const double DEFAULT_ANGLE = -30; //cho chim huong len goc 30 do khi bay
+const int SLOW_DOWN_RENDER_BIRD = 4;//dieu chinh do muot
 const int BIRD_HEIGHT = 610;
 const int BIRD_WIDTH = 2868;
 const int DEFAULT_BIRD_X = 256;
@@ -30,7 +30,7 @@ const int DEFAULT_BIRD_X = 256;
 const int TOTAL_PIPE = 5;
 const int MAX_PIPE_Y = 550;
 const int MIN_PIPE_Y = 250;
-const int PIPE_DISTANCE = 175;
+const int PIPE_DISTANCE = 175; //khoang cach 1 cap ong nuoc
 const int SPEED_MOVING_VERTICAL = 1;
 
 //Score constant
@@ -93,7 +93,7 @@ bool isMainMenu = true; //Signal to open main menu
 
 bool isStartingGame = false; //Signal to start game
 
-bool isResetingGame = true; //Signal to reset game
+bool isResetingGame = true; //Signal to reset game, thiet lap lai 1 so trang thai ban dau -> true
 
 //Check if a key is holding or not
 //to avoid continuously holding a key so that the bird is flying high faster
@@ -111,7 +111,7 @@ bool repeatFly = false; //Make sure the bird flaps wing only when it flys (space
 
 //Global variables to handle screen flickering
 bool isFlash = false; //Signal to flicker the screen (white flash) when the bird collides
-int alphaFlash = SDL_ALPHA_OPAQUE; //Adjust the transparency of white screen when flashing
+int alphaFlash = SDL_ALPHA_OPAQUE; //Adjust the transparency of white screen when flashing, default = 255 (white)
 int mode = 13;//Adjust the white flash appearing speed
 
 int point = 0; //Store point on gameplay
@@ -124,8 +124,8 @@ int numberOfFrame = 4;
 static int frame = 0; //Store frame number to render bird flying
 
 int alphaBlackTransition = 0;
-bool isBlackTransition = false;
-int volumeMusic = MIX_MAX_VOLUME;
+bool isBlackTransition = false; //if true, the screen will gradually become black.
+int volumeMusic = MIX_MAX_VOLUME; //max value in SDL_mixer
 
 int alphaGameOver = 0;
 
@@ -172,11 +172,10 @@ void HandleEvents() {
 		//Game reseting process when pressing S key
 		if (event.key.keysym.sym == SDLK_s || replay->IsClicking()) {
 
-			if (!isResetingGame && !isStartingGame) {
-
+			if (!isResetingGame && !isStartingGame) { //khi dang choi hoac dang reset se khong reset duoc
 				isResetingGame = true;
 
-				flappyBird->SetDefaultStatus(DEFAULT_BIRD_X, GROUND_Y / 2, 0, 0, 0);
+				flappyBird->SetDefaultStatus(DEFAULT_BIRD_X, GROUND_Y / 2, 0, 0, 0); // angle =0, velFly =  velRotate = 0;
 
 				for (int i = 0; i < TOTAL_PIPE; i++) {
 					pipe[i]->SetStatus(SCREEN_WIDTH + i * SCREEN_WIDTH / (TOTAL_PIPE - 1), MAX_PIPE_Y, MIN_PIPE_Y, PIPE_DISTANCE);
@@ -189,7 +188,7 @@ void HandleEvents() {
 
 				point = 0;
 				score->SetSize(SCORE_X, SCORE_Y, SCORE_WIDTH_CHAR * 8, SCORE_HEIGHT_CHAR);
-				score->ChangeText("Score: 0");
+				score->ChangeText("Score: 0"); //cap nhat lai size
 
 				highScore->SetSize(SCORE_X, SCORE_Y + SCORE_HEIGHT_CHAR + 2, SCORE_WIDTH_CHAR * (12 + hScore.length()), SCORE_HEIGHT_CHAR);
 				highScore->ChangeText("High score: " + hScore);
@@ -200,6 +199,7 @@ void HandleEvents() {
 			}
 
 		}
+		//return main menu
 		if (event.key.keysym.sym == SDLK_m || home->IsClicking()) {
 			isPlayingMusic = false;
 			isMainMenu = true;
@@ -237,7 +237,7 @@ void HandleEvents() {
 			if (event.type == SDL_KEYDOWN) {
 				if (!isMainMenu) {
 					//Handle starting game
-					if (!isStartingGame && isResetingGame && alphaBlackTransition == 0) {
+					if (!isStartingGame && isResetingGame && alphaBlackTransition == 0 ) { //man hinh dang hien len roi moi choi duoc
 						isStartingGame = true;
 						isResetingGame = false;
 					}
@@ -248,7 +248,7 @@ void HandleEvents() {
 						flappyBird->DrawFrame(0, SLOW_DOWN_RENDER_BIRD);
 						flappyBird->ShiftColliders();
 						soundFly->PlaySound(0);
-						frame = 0;
+						frame = 0; //dat lai trang thai frame dau tien de ve tiep
 						isHoldingKey = true;
 						repeatFly = false;
 
@@ -363,14 +363,14 @@ void HandleEvents() {
 			flappyBird->CreateCollisionShape(birdCollisionBox);
 		}
 		if (setting->IsClicking()) {
-			if (isSetting) {
+			if (isSetting) { //dang mo, nhan thi dong
 				isSetting = false;
 			}
-			else isSetting = true;
+			else isSetting = true; //nguoc lai
 		}
 		if (soundOnOff->IsClicking()) {
 			int volume = 0;
-			if (soundOnOff->GetClip().x == 0) {
+			if (soundOnOff->GetClip().x == 0) { //dang bat
 				soundOnOff->SetClip(432, 0, 432, 171);
 				volume = 0;
 			}
@@ -441,8 +441,8 @@ void HandleRendering() {
 			if (volumeMusic < 0) volumeMusic = 0;
 
 
-			if (alphaBlackTransition > SDL_ALPHA_OPAQUE) {
-				alphaBlackTransition = SDL_ALPHA_OPAQUE;
+			if (alphaBlackTransition > SDL_ALPHA_OPAQUE) { //khi vuot qua nguong -> trang thai khong trong suot
+				alphaBlackTransition = SDL_ALPHA_OPAQUE; //gan gia tri -> dam bao da hoan toan chuyen den
 				isMainMenu = false;
 				isResetingGame = true;
 				bgMusic->StopSound();
@@ -466,10 +466,10 @@ void HandleRendering() {
 				numberOfFrame = 4;
 			}
 
-			++frame;
+			++frame; //một khung hình mới đã được vẽ hoặc hiển thị.
 			if (frame / SLOW_DOWN_RENDER_BIRD >= numberOfFrame) {
 				frame = 0;
-			}
+			} //
 
 			ground->Scroll(SPEED_SCROLLING_SCREEN);
 			ground->RenderScrolling();
@@ -579,7 +579,7 @@ void HandleRendering() {
 				else {
 					flappyBird->StopOnGround(GROUND_Y - 52);
 					alphaGameOver += 10;
-					if (alphaGameOver > SDL_ALPHA_OPAQUE) alphaGameOver = SDL_ALPHA_OPAQUE;
+					if (alphaGameOver > SDL_ALPHA_OPAQUE) alphaGameOver = SDL_ALPHA_OPAQUE; //khong trong suot
 
 					gameOver->SetAlpha(alphaGameOver);
 					scoreBoard->SetAlpha(alphaGameOver);
@@ -650,7 +650,7 @@ int main(int argc, char* args[]) {
 	app = new SDLApp(IMG_INIT_PNG, title, SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_WIDTH, SCREEN_HEIGHT);
 
 	//Initialize background
-	background = new GameObject(app->GetRenderer(), "asset/image/backgroundgame.png");
+	background = new GameObject(app->GetRenderer(), "asset/image/backgroundgame1.png");
 	background->GetTexturedRectangle().SetPosition(0, 0);
 	background->GetTexturedRectangle().SetDimension(SCREEN_WIDTH, SCREEN_HEIGHT);
 
@@ -742,7 +742,7 @@ int main(int argc, char* args[]) {
 
 	newRecord = new SoundEffect("asset/sound/new-record.wav");
 
-	setting = new Button(app->GetRenderer(), "asset/image/setting.png", 10, 10, 40, 40);
+	setting = new Button(app->GetRenderer(), "asset/image/settingbutton.png", 10, 10, 40, 40);
 
 	settingBoard = new TexturedRectangle(app->GetRenderer(), "asset/image/setting-board.png");
 	settingBoard->SetPosition(60, 10);

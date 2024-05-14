@@ -11,8 +11,8 @@ void Ground::Scroll(int speedScrolling)
 
 void Ground::RenderScrolling()
 {
-	GetTexturedRectangle().SetPosition(mScrollingGround, GetY());
+	GetTexturedRectangle().SetPosition(mScrollingGround, GetY());//thiet lap vi tri doan dat cuon
 	Render();
-	GetTexturedRectangle().SetPosition(mScrollingGround + GetTexturedRectangle().GetWidth(), GetY());
+	GetTexturedRectangle().SetPosition(mScrollingGround + GetTexturedRectangle().GetWidth(), GetY());// doan dat cuon tiep theo ben phai
 	Render();
 }
