@@ -42,7 +42,7 @@ const int SCORE_HEIGHT_CHAR = 28;
 //Ground constant
 const int GROUND_Y = 600;
 
-//Store character Y and width
+//Store character Y and width frame
 const vector<pair<int, int>> CharacterProperties = { {0, 712}, {520, 713}, {1061, 667}, {1647, 760}, {2250, 717}, {2860, 716}, {3492, 0} };
 
 //Declare main game
@@ -563,10 +563,6 @@ void HandleRendering() {
 
 			}
 			else {
-
-
-
-
 				background->Render();
 				for (int i = 0; i < TOTAL_PIPE; i++) {
 					pipe[i]->Render();

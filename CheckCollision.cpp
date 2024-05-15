@@ -45,7 +45,7 @@ bool doIntersect(Point p1, Point q1, Point p2, Point q2)
 	int o4 = orientation(p2, q2, q1);
 
 	// General case
-	if (o1 != o2 && o3 != o4)
+	if (o1 != o2 && o3 != o4) //huong khac nhau->giao nhau
 		return true;
 
 	// Special Cases
@@ -70,45 +70,6 @@ Point rotate(Point src, Point center, double angle) {
 	src.y = center.y + (src.x - center.x) * sin(angle) + (src.y - center.y) * cos(angle);
 	return src;
 }
-
-//SDL_bool CheckCollision(SDL_Rect* rect1, double angle1, Point center1, SDL_Rect* rect2, double angle2, Point center2)
-//{
-//	//Convert integer coordinate to double coordinate
-//	double rect1x = rect1->x;
-//	double rect1y = rect1->y;
-//	double rect1w = rect1->w;
-//	double rect1h = rect1->h;
-//
-//	double rect2x = rect2->x;
-//	double rect2y = rect2->y;
-//	double rect2w = rect2->w;
-//	double rect2h = rect2->h;
-//
-//	//Store new rect after rotation
-//	vector<Point> newRect1;
-//	//Point center1 = { rect1x + rect1w / 2, rect1y + rect1h / 2 };
-//
-//
-//	newRect1.push_back(rotate({ rect1x, rect1y }, center1, angle1));
-//	newRect1.push_back(rotate({ rect1x, rect1y + rect1h }, center1, angle1));
-//	newRect1.push_back(rotate({ rect1x + rect1w, rect1y }, center1, angle1));
-//	newRect1.push_back(rotate({ rect1x + rect1w, rect1y + rect1h }, center1, angle1));
-//
-//	vector<Point> newRect2;
-//	//Point center2 = { rect2x + rect2w / 2, rect2y + rect2h / 2 };
-//	newRect2.push_back(rotate({ rect2x, rect2y }, center2, angle2));
-//	newRect2.push_back(rotate({ rect2x, rect2y + rect2h }, center2, angle2));
-//	newRect2.push_back(rotate({ rect2x + rect2w, rect2y }, center2, angle2));
-//	newRect2.push_back(rotate({ rect2x + rect2w, rect2y + rect2h }, center2, angle2));
-//
-//	//Collide if any pair of segments intersect
-//	for (int i = 0; i < 4; i++) {
-//		for (int j = 0; j < 4; j++) {
-//			if (doIntersect(newRect1[i % 4], newRect1[(i + 1) % 4], newRect2[j % 4], newRect2[(j + 1) % 4])) return SDL_TRUE;
-//		}
-//	}
-//	return SDL_FALSE;
-//}
 
 SDL_bool CheckCollision2(vector<Point> shape1, double angle, Point center1, SDL_Rect* shape2)
 {

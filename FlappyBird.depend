@@ -1,5 +1,5 @@
 # depslib dependency file v1.0
-1715558175 source:d:\flappybird\bird.cpp
+1715710333 source:d:\flappybird\bird.cpp
 	"Bird.h"
 
 1714589334 d:\flappybird\gameobject.h
@@ -68,7 +68,7 @@
 1714589334 d:\flappybird\button.h
 	"TexturedRectangle.h"
 
-1715704007 source:d:\flappybird\main.cpp
+1715746022 source:d:\flappybird\main.cpp
 	"SDLApp.h"
 	"TexturedRectangle.h"
 	"GameObject.h"
@@ -100,7 +100,7 @@
 	<random>
 	"CheckCollision.h"
 
-1715487133 source:d:\flappybird\checkcollision.cpp
+1715710333 source:d:\flappybird\checkcollision.cpp
 	"CheckCollision.h"
 	<cmath>
 
