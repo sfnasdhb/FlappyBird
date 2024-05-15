@@ -3,7 +3,7 @@
 Flappy Bird is a simple yet addictive side-scrolling game where the player controls a bird and navigates it through a series of pipes without colliding with them. The objective is to fly as far as possible while avoiding obstacles to achieve a higher score.
 ## INSTALL
 - Installing SDL2 libraries.
-- First Method: In Github, choosing "Code" and choosing "Download ZIP".
+- In Github, choosing "Code" and choosing "Download ZIP".
 - Running code.
 ## GAME RULES
 In this game, you navigate a bird through a series of pipes. Each time the bird passes through a pair of pipes successfully, you earn a point. However, be careful! Colliding with a pipe or the ground will end the game. Can you guide the bird to fly safely and rack up as many points as possible?
